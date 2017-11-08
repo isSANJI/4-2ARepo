@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LooseCollider : MonoBehaviour {
 
-    public LevelManager myLevelManager;
+    private LevelManager myLevelManager;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,6 +20,8 @@ public class LooseCollider : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
+        myLevelManager = GameObject.FindObjectOfType<LevelManager>();
 		
 	}
 	

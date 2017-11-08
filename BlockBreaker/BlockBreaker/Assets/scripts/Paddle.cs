@@ -20,7 +20,8 @@ public class Paddle : MonoBehaviour {
         //keeps the y-position fixed
         Vector3 paddlePosition = new Vector3(0.5f, this.transform.position.y, 0);
 
-        paddlePosition.x = mousePosInBlocks;
+        //limit the movement of the mouse from -6.5f to 6.5f in x-axis
+        paddlePosition.x = Mathf.Clamp(mousePosInBlocks, -6.5f, 6.5f);
 
         //sets the position of the paddle (this) to 
         //the paddlePosition

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
 
-    public Paddle myPaddle;
+    private Paddle myPaddle;
 
     private Vector3 paddleToBallVector;
 
@@ -12,6 +12,10 @@ public class Ball : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        //searches for Object of Type Paddle in the scene  
+        //and assigns it to myPaddle
+        myPaddle = GameObject.FindObjectOfType<Paddle>();
 
         //saves the distance between the ball and the paddle
         paddleToBallVector = this.transform.position - myPaddle.transform.position;
