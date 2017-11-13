@@ -10,8 +10,16 @@ public class Ball : MonoBehaviour {
 
     bool hasStarted = false;
 
-	// Use this for initialization
-	void Start () {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (hasStarted)
+        {
+            this.GetComponent<AudioSource>().Play();
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
 
         //searches for Object of Type Paddle in the scene  
         //and assigns it to myPaddle

@@ -12,6 +12,20 @@ public class LevelManager : MonoBehaviour {
         SceneManager.LoadScene(levelName);
     }
 
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void BrickDestroyed()
+    {
+        //if the brick is the last one to be destroyed
+        if (Brick.breakableCount <= 0)
+        {
+            LoadNextLevel();
+        }
+    }
+
     public void QuitGame()
     {
         UnityEditor.EditorApplication.isPlaying = false;

@@ -31,7 +31,7 @@ public class Paddle : MonoBehaviour {
 
         
 
-        print(mousePosInBlocks);
+        
 		
 	}
 }
