@@ -6,15 +6,27 @@ public class Ball : MonoBehaviour {
 
     private Paddle myPaddle;
 
+    float randomX, randomY;
+
     private Vector3 paddleToBallVector;
 
     bool hasStarted = false;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        randomX = Random.Range(0f, 0.2f);
+        randomY = Random.Range(0f, 0.2f);
+
+        //creating a Vector2 tweak with a random X and random Y
+        Vector2 tweak = new Vector2(randomX, randomY);
+
         if (hasStarted)
         {
             this.GetComponent<AudioSource>().Play();
+
+            //velocity = velocity + tweak
+            this.GetComponent<Rigidbody2D>().velocity += tweak;
+
         }
     }
 

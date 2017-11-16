@@ -6,6 +6,8 @@ public class Brick : MonoBehaviour {
 
     public int maxHits;
 
+    public AudioClip myClip;
+
     private LevelManager myLevelManager;
 
     private int numberOfHits;
@@ -20,6 +22,8 @@ public class Brick : MonoBehaviour {
         if (numberOfHits >= maxHits)
         {
             breakableCount--;
+            AudioSource.PlayClipAtPoint(myClip, this.transform.position);
+
             Destroy(this.gameObject);
             myLevelManager.BrickDestroyed();
         }
@@ -41,9 +45,30 @@ public class Brick : MonoBehaviour {
 
     }
 
+    void Awake()
+    {
+        
+        
+        
+    }
+
+    void GenerateRandomBricks()
+    {
+        print("Level " + myLevelManager.GetCurrentLevel());
+        print("Screen: "+ Screen.width);
+    }
+
 
     // Use this for initialization
     void Start () {
+        myLevelManager = GameObject.FindObjectOfType<LevelManager>();
+        if (myLevelManager.GetCurrentLevel() == "Level03")
+        {
+            GenerateRandomBricks();
+        }
+
+        numberOfHits = 0;
+        
         //depending on the tag isBreakable will be 
         //marked as True or False
         isBreakable = this.tag == ("Breakable");
@@ -51,13 +76,10 @@ public class Brick : MonoBehaviour {
         if (isBreakable)
         {
             breakableCount++;
-            print(breakableCount);
+            
         }
 
-        myLevelManager = GameObject.FindObjectOfType<LevelManager>();
-
-        numberOfHits = 0;
-		
+        
 	}
 	
 	// Update is called once per frame

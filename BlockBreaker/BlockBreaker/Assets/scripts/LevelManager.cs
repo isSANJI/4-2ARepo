@@ -17,6 +17,12 @@ public class LevelManager : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public string GetCurrentLevel()
+    {
+        //print(SceneManager.GetActiveScene().name);
+        return SceneManager.GetActiveScene().name;
+    }
+
     public void BrickDestroyed()
     {
         //if the brick is the last one to be destroyed

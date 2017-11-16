@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour {
 
-    
+    private Ball myBall;
 
 	// Use this for initialization
 	void Start () {
+
+        myBall = GameObject.FindObjectOfType<Ball>();
 		
 	}
 	
@@ -21,7 +23,7 @@ public class Paddle : MonoBehaviour {
         Vector3 paddlePosition = new Vector3(0.5f, this.transform.position.y, 0);
 
         //limit the movement of the mouse from -6.5f to 6.5f in x-axis
-        paddlePosition.x = Mathf.Clamp(mousePosInBlocks, -6.5f, 6.5f);
+        paddlePosition.x = Mathf.Clamp(myBall.transform.position.x, -6.5f, 6.5f);
 
         //sets the position of the paddle (this) to 
         //the paddlePosition
